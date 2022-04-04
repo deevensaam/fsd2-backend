@@ -3,8 +3,19 @@ const mongoose = require("mongoose");
 const swaggerUI = require("swagger-ui-express");
 const cors = require('cors')
 const YAML = require("yamljs");
+const morgan = require('morgan');
+const fsr = require('file-stream-rotator');
 
 let app = express();
+
+let logsinfo = fsr.getStream({
+    filename: "data.log",
+    frequency: "1h",
+    max_logs: "5",
+    verbose: true,
+  });
+app.use(morgan("tiny", { stream: logsinfo }));
+  
 
 app.use(cors())
 
@@ -20,7 +31,7 @@ db.once("open", () => {
 
 app.use(express.json());
 
-const searchRouter = require("./routes/searchRoutes");
+const searchRouter = require("./routes/searchRoutes");  
 const movieRouter = require("./routes/movieRoutes");
 const feedbackRouter = require("./routes/feedbackRoutes");
 const queryRouter = require("./routes/queriesRoutes");
