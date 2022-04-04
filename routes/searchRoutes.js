@@ -18,11 +18,12 @@ router.post("/", async (req, res) => {
   const search = new Search({
     Title: req.body.Title,
     Year: req.body.Year,
-    imdb: req.body.imdb,
+    imdbID: req.body.imdbID,
     Type: req.body.Type,
     Language: req.body.Language,
     Genre: req.body.Genre,
     Poster: req.body.Poster,
+    movieReviews: req.body.movieReviews
   });
   try {
     const newSearch = await search.save();
@@ -46,8 +47,8 @@ router.patch("/:id", getSearchById, async (req, res) => {
   if (req.body.Year != null) {
     res.search.Year = req.body.Year;
   }
-  if (req.body.imdb != null) {
-    res.search.imdb = req.body.imdb;
+  if (req.body.imdbID != null) {
+    res.search.imdbID = req.body.imdbID;
   }
   if (req.body.Type != null) {
     res.search.Type = req.body.Type;    
@@ -61,6 +62,10 @@ router.patch("/:id", getSearchById, async (req, res) => {
   if (req.body.Poster != null) {
     res.search.Poster = req.body.Poster;    
   }
+  if (req.body.movieReviews != null) {
+    res.search.movieReviews = req.body.movieReviews;    
+  }
+
   try {
     const updatedSearch = await res.search.save();
     res.status(200).json(updatedSearch);

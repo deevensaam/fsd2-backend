@@ -10,7 +10,7 @@ const SearchSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  imdb: {
+  imdbID: {
     type: String,
     required: true,
   },
@@ -30,6 +30,11 @@ const SearchSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  movieReviews:[
+    {
+      type:String
+    }
+  ]
 });
 
 module.exports = mongoose.model("Search", SearchSchema);
