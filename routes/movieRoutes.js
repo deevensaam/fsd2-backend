@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
   // create individual
 router.post("/", async (req, res) => {
-    const movie = newMovie({
+    const movie = new Movie({
       title: req.body.title,
       genre: req.body.genre,
       imdb: req.body.imdb,
@@ -39,25 +39,25 @@ router.get("/:id", getMovieById, (req, res) => {
   // update individual
 router.patch("/:id", getMovieById, async (req, res) => {
     if (req.body.title != null) {
-      res.search.title = req.body.title;
+      res.movie.title = req.body.title;
     }
     if (req.body.genre != null) {
-      res.search.genre = req.body.genre;
+      res.movie.genre = req.body.genre;
     }
     if (req.body.imdb != null) {
-      res.search.imdb = req.body.imdb;
+      res.movie.imdb = req.body.imdb;
     }
     if (req.body.image != null) {
-      res.search.image = req.body.image;    
+      res.movie.image = req.body.image;    
     }
     if (req.body.duration != null) {
-      res.search.duration = req.body.duration;    
+      res.movie.duration = req.body.duration;    
     }
     if (req.body.trailer != null) {
-      res.search.trailer = req.body.trailer;    
+      res.movie.trailer = req.body.trailer;    
     }
     try {
-      const updatedMovie = await res.search.save();
+      const updatedMovie = await res.movie.save();
       res.status(200).json(updatedMovie);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -67,7 +67,7 @@ router.patch("/:id", getMovieById, async (req, res) => {
   // delete individual
 router.delete("/:id", getMovieById, async (req, res) => {
     try {
-      await res.search.remove();
+      await res.movie.remove();
       res.status(200).json({ message: "deleted succesfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -84,7 +84,7 @@ router.delete("/:id", getMovieById, async (req, res) => {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
-    res.search = search;
+    res.movie = movie;
     nxt();
   }
   
