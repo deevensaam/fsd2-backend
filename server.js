@@ -12,6 +12,7 @@ let logsinfo = fsr.getStream({
     filename: "data.log",
     frequency: "1h",
     max_logs: "5",
+    
     verbose: true,
   });
 app.use(morgan("tiny", { stream: logsinfo }));

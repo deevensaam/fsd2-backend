@@ -1,0 +1,2 @@
+DELETE /user/624b3477ef79e84962f6aed5 200 33 - 8.033 ms
+GET /user 200 425 - 2.871 ms

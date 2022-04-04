@@ -1,0 +1,8 @@
+GET /Search 304 - - 77.456 ms
+GET /search 304 - - 163.035 ms
+GET /query/Search?Language=&Genre=&Title= 304 - - 291.638 ms
+GET /api-docs/swagger-ui-init.js 304 - - 0.599 ms
+GET /api-docs/swagger-ui-bundle.js 304 - - 10.609 ms
+GET /api-docs/swagger-ui-standalone-preset.js 304 - - 6.021 ms
+GET /api-docs/swagger-ui.css 304 - - 11.649 ms
+GET /user 200 506 - 4.050 ms
